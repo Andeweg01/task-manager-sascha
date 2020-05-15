@@ -18,7 +18,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">assignment</i>
-        <input id="task_name" name="task_name" type="text" class="validate" />
+        <input id="task_name" name="task_name" type="text">
         <label for="icon_prefix">Task Name</label>
       </div>
     </div>
@@ -36,18 +36,14 @@
     <div class="row">
       <div id="matfixer" class="input-field col s12">
         <i class="material-icons prefix">today</i>
-        <input id="due_date" name="due_date" type="text" class="datepicker" />
+        <input id="due_date" name="due_date" type="text" class="datepicker">
         <label for="icon_prefix">Due Date</label>
       </div>
     </div>
     <div class="row">
       <div class="switch">
         <label>
-          {% if task.is_urgent %}
-          <input id="is_urgent" name="is_urgent" type="checkbox" checked />
-          {% else %}
-          <input id="is_urgent" name="is_urgent" type="checkbox" />
-          {% endif %}
+          <input id="is_urgent" name="is_urgent" type="checkbox">
           <span class="lever"></span>
           Is Urgent
         </label>

@@ -71,7 +71,7 @@ def edit_category(category_id):
     category=mongo.db.categories.find_one({'_id': ObjectId(category_id)}))
 
 
-@app.route('/update_category/<category_id', methods=['POST'])
+@app.route('/update_category/<category_id>', methods=['POST'])
 def update_category(category_id):
     mongo.db.categories.update(
         {'_id': ObjectId(category_id)},
@@ -93,8 +93,8 @@ def insert_category():
     return redirect(url_for('get_categories'))
 
 
-@app.route('/new_category')
-def new_category():
+@app.route('/add_category')
+def add_category():
     return render_template('addcategory.html')
 
 
