@@ -10,12 +10,13 @@
 		<li>
 			<div class="collapsible-header">
 				<a href="" class="waves-effect waves-light btn">Done</a>
-				<a href="" class="waves-effect waves-light btn blue">Edit</a>
+				<a href="{{ url_for('edit_category', category_id=category._id) }}" class="waves-effect waves-light btn blue">Edit</a>
 				<strong>{{category.category_name}}</strong>
 			</div>
+        </li>
 </div>
-</li>
-{% endfor %}
 </ul>
+
+{% endfor %}
 
 {% endblock %}
