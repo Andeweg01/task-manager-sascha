@@ -32,11 +32,10 @@ def insert_task():
 
 @app.route('/edit_task/<task_id>')
 def edit_task(task_id):
-    _task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
-    _categories = mongo.db.categories.find()
-    category_list = [category for category in _categories]
+    the_task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    all_categories = mongo.db.categories.find()
     return render_template('edittask.html', 
-        task=_task, categories=category_list)
+        task=the_task, categories=all_categories)
 
 
 @app.route('/update_task/<task_id>', methods=['POST'])
