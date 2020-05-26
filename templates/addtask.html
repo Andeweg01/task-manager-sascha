@@ -1,26 +1,55 @@
-{% extends 'base.html' %}
-{% block content %}
-
+{% extends 'base.html' %} {% block content %}
+<h3>Add Task</h3>
 <div class="row">
-
-	<h3>Categories</h3>
-
-	<ul class="collapsible" data-collapsible="accordion">
-		{% for category in categories %}
-		<li>
-			<div class="collapsible-header">
-				<a href="{{url_for('delete_category', category_id=category._id)}}" class="waves-effect waves-light btn">Delete</a>
-				<a href="{{url_for('edit_category', category_id=category._id)}}" class="waves-effect waves-light btn blue">Edit</a>
-                <div class="task_header">
-				<strong>{{category.category_name}}</strong>
+    <form action="{{ url_for('insert_task') }}" method="POST"  class="col s12">
+        <div class="row">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">poll</i>
+                    <select id="category" name="category_name">
+                  <option value="" disabled selected>Choose Category</option>
+                  {% for cat in categories %}
+                      <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                  {% endfor %}
+                </select>
+                    <label>Task Category</label>
                 </div>
-			</div>
-            {% endfor %}
-    </ul>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">assignment</i>
+                <input id="task_name" name="task_name" type="text">
+                <label for="icon_prefix">Task Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">subject</i>
+                <textarea name="task_description" id="task_description" class="materialize-textarea"></textarea>
+                <label for="icon_telephone">Task Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">today</i>
+                <input id="due_date" name="due_date" type="text" class="datepicker">
+                <label for="icon_prefix">Due Date</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="switch">
+                <label>
+                  <input id="is_urgent" name="is_urgent" type="checkbox">
+                  <span class="lever"></span>
+                  Is Urgent
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add Task
+                <i class="material-icons right">playlist_add</i>
+             </button>
+        </div>
+    </form>
 </div>
-<div class="row">
-    <a href="{{url_for('add_category')}}" class="waves-effect waves-light btn">
-        <i class="material-icons right">playlist_add</i>Add Category
-    </a>
 
-{% endblock %}>
+{% endblock %}
